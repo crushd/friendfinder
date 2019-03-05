@@ -3,10 +3,23 @@ html {
     height:100%;
 }
 
+body {
+    background: url('../images/ignasi_pattern_s.png') fixed;
+}
+
 .card {
     box-shadow: 3px 3px 5px #666;
 }
 
+.card:hover {
+    box-shadow: 1px 1px 5px #666;
+}
+
 .card-header {
     background: url('../images/card-header-background.png');
+}
+
+.fa-star-of-life {
+    font-size:0.8rem;
+    color:#666;
 }
