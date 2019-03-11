@@ -284,5 +284,80 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+
+    <script>
+    $(document).on("click", "#submit", function(){
+        
+        event.preventDefault();
+
+        var tempScores = [/*q1,q2,q3,q4,q5,q6,q7,q8,q9,q10*/];
+        /* for (var i=1; i < 2; i++) {
+            tempScores.push($('#q'+[i]).val());
+        } */
+            tempScores.push($('#q1').val());
+            tempScores.push($('#q2').val());
+            tempScores.push($('#q3').val());
+            tempScores.push($('#q4').val());
+            tempScores.push($('#q5').val());
+            tempScores.push($('#q6').val());
+            tempScores.push($('#q7').val());
+            tempScores.push($('#q8').val());
+            tempScores.push($('#q9').val());
+            tempScores.push($('#q10').val());
+
+		// Here we grab the form elements
+		var potentialFriend = {
+			name: $('#name').val(),
+			photo: $('#photo').val(),
+			scores: tempScores
+		};
+
+		console.log(potentialFriend);
+
+		// This line is the magic. It's very similar to the standard ajax function we used.
+		// Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+		// The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+		// depending on if a tables is available or not.
+
+		// Here we get the location of the root page.
+		// We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+		var currentURL = window.location.origin;
+
+	    $.post(currentURL + "../../api/friends", potentialFriend,
+	    function(data){
+            console.log("----");
+            console.log(data);
+            console.log("----");
+
+	    	// If a table is available... tell user they are booked.
+	    	if(data){
+	    		alert("Data saved.")
+	    	}
+
+	    	// If a table is not available... tell user they on the waiting list.
+	    	else {
+	    		alert("Sorry, not saved.")
+	    	}
+
+	    	// Clear the form when submitting
+    		$('#name').val("");
+			$('#photo').val("");
+			$('#q1').val("");
+			$('#q2').val("");
+			$('#q3').val("");
+			$('#q4').val("");
+			$('#q5').val("");
+			$('#q6').val("");
+			$('#q7').val("");
+			$('#q8').val("");
+			$('#q9').val("");
+			$('#q10').val("");
+
+	    });
+
+});
+
+</script>
+
+</body>
 </html>
