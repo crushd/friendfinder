@@ -31,6 +31,11 @@ app.get("/api/friends", function(request, results) {
 app.post("/api/friends", function(req, res) {
 
     console.log("friends route req: " + req);
+    
+    var newFriend = req.body
+
+        friendList.push(newFriend);
+        res.json(friendList)
 
 
 });

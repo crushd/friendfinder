@@ -323,7 +323,7 @@
 		// We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
 		var currentURL = window.location.origin;
 
-	    $.post(currentURL + "../../api/friends", potentialFriend,
+	    $.post(currentURL + "/api/friends", potentialFriend,
 	    function(data){
             console.log("----");
             console.log(data);
