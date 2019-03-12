@@ -25,12 +25,29 @@ app.get("/survey", function(req, res) {
 });
 
 app.get("/api/friends", function(request, results) {
+    console.log("friendList Length: " + friendList.length)
+    console.log(request);
+
+
+
+    for (var i=0; i<friendList.length; i++) {
+
+        console.log(friendList[i]);
+
+
+
+
+    }
+
+
     return results.json(friendList);
+
+
 });
 
 app.post("/api/friends", function(req, res) {
 
-    console.log("friends route req: " + req);
+    // console.log("friends route req: " + req);
     
     var newFriend = req.body
 
